@@ -28,19 +28,10 @@
 enum { PCB, ENG, OUTS, VEH }; // dallas order
 enum { CUR,  DIF };           // curent temperature, difference
 //======================= consts ========================
-//const char* broker = "m23.cloudmqtt.com,17015";
 const char* proto  = "MQIsdp";
 const byte  ver    =  3;
 const char* cid    = "BlackBox";
 const char* willt  = "inf/online";
-//const char* user   = "kcybhxcn";
-//const char* pass   = "8GRqKEu2iW13";
-//const byte sid0[8] = {0x28, 0xE6, 0xBD, 0x3B, 0x05, 0x00, 0x00, 0xCF}; //0x20, 0x0C, 0x01, 0x07, 0x27, 0x74, 0x09, 0x15 //key = CA DB AF 5E 8B 3B 9B 00
-
-//const byte sid[4][8] = { {0x28, 0xE6, 0xBD, 0x3B, 0x05, 0x00, 0x00, 0xCF},    // blbx self
-//                         {0x28, 0x7B, 0x45, 0x46, 0x92, 0x01, 0x02, 0xB3},    // engine
-//                         {0x28, 0xEB, 0xB0, 0x77, 0x91, 0x0D, 0x02, 0x18},    // outside air
-//                         {0x28, 0x7E, 0x60, 0x46, 0x92, 0x02, 0x02, 0x27} };  // vehacle
 //===================== variables ======================
 char     at[128]    =  "";
 char     notify[16] =  "";
