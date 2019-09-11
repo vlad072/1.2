@@ -19,9 +19,9 @@ srv=<url>,<port> - mqtt broker addr
 usr=<username>   - login for authorization
 pwd=<password>   - password
 sens=0           - teach the internal pcb temperature sensor
-sens=1           - ...engine...
-sens=2           - ...outside air...
-sens=3           - ...vehacle...
+sens=1           - ...engine
+sens=2           - ...outside air
+sens=3           - ...vehacle
 end              - finish the settings and reboot
 ============= technical info ============
   --- topics for information transfer ---
