@@ -22,12 +22,13 @@ sens=0           - teach the internal pcb temperature sensor
 sens=1           - ...engine
 sens=2           - ...outside air
 sens=3           - ...vehacle
-end              - finish the settings and reboot
+end              - finish the settings & reboot
 ============= technical info ============
   --- topics for information transfer ---
   root topics:
-'cmd/#' - commands from user to car (below 'c')
-'inf/#' - feedback from car to user app (below 'i')
+'cmd/#'  - commands from user to car (below 'c')
+'inf/#'  - feedback from car to user app (below 'i')
+'notify' - push notification to app
   low-level topics:
 'btpow'    - on/off bt power                        (c/i)
 'btpair'   - munber paired devices                  (i)
@@ -48,11 +49,16 @@ end              - finish the settings and reboot
 'sms'      - push/sms notify                        (c/i)
 'keepc'    - keep connect to broker                 (c/i)
 'recon'    - broker reconnect count (debug)         (c/i)
-'alarm'    - alarm triggering                       (i)
+'alarm'    - alarm triggering/reset                 (c/i)
 'vbatt'    - battery voltage                        (i)
 'engr'     - engine running                         (i)
 'drop'     - door opened                            (i)
 'hdop'     - hood opened                            (i)
+'start'    - start/stop engine                      (c)
+'btatt'    - attach new bt dev                      (c)
+'btpin'    - change bt pin (4 digit)                (c)
+'upd'      - update app info (one tab)              (c)
+'online'   - linked to brocker flag                 (i)
 ------ voice *.amr files into modem ------
 'recov'  - modem recovery
 'keep'   - keep connect
