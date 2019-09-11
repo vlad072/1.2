@@ -23,12 +23,12 @@ sens=1           - ...engine
 sens=2           - ...outside air
 sens=3           - ...vehacle
 end              - finish the settings & reboot
-============= technical info ============
+=============== tech info ==============
   --- topics for information transfer ---
   root topics:
-'cmd/#'  - commands from user to car (below 'c')
-'inf/#'  - feedback from car to user app (below 'i')
-'notify' - push notification to app
+'cmd/#'    - commands from user to car (below 'c')
+'inf/#'    - feedback from car to user app (below 'i')
+'notify'   - push notification to app
   low-level topics:
 'btpow'    - on/off bt power                        (c/i)
 'btpair'   - munber paired devices                  (i)
@@ -60,19 +60,19 @@ end              - finish the settings & reboot
 'upd'      - update app info (one tab)              (c)
 'online'   - linked to brocker flag                 (i)
 ------ voice *.amr files into modem ------
-'recov'  - modem recovery
-'keep'   - keep connect
-'nkeep'  - don't keep
-'shken'  - shock sensor enabled
-'shkdis' - ...disabled
-'setup'  - initial setup mode
+'recov'    - modem recovery
+'keep'     - keep connect
+'nkeep'    - don't keep
+'shken'    - shock sensor enabled
+'shkdis'   - ...disabled
+'setup'    - initial setup mode
 'error'
 'hello'
-'fire'   - fire alarm!!
-'ignon'  - ignition on trigged alarm
+'fire'     - fire alarm!!
+'ignon'    - ignition on trigged alarm
 'dooropen'
 'hoodopen'
-'shock'  - bang alarm 2st
-'mute'   - shutup siren
+'shock'    - bang alarm 2st
+'mute'     - shutup siren
 'armed'
 'disarmed'
