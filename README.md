@@ -11,7 +11,7 @@
 '2' - keep connection enable/disable. reconnect in case of connection loss
 '3' - shock sensor enable/disable
 '6' - shut up the siren
-'9' - arm/disarm
+*'9' - arm/disarm
 '#' - restore modem defaults then reboot
 '0' - setup mode for settings
   --- initial settings through bt spp ---
@@ -26,7 +26,7 @@ end              - finish the settings & reboot
 =============== tech info ==============
   --- topics for information transfer ---
   root topics:
-'cmd/#'    - commands from user to car (below 'c')
+'cmd/#'    - commands from user to car (below remark 'c')
 'inf/#'    - feedback from car to user app (below 'i')
 'notify'   - push notification to app
   low-level topics:
@@ -69,10 +69,13 @@ end              - finish the settings & reboot
 'error'
 'hello'
 'fire'     - fire alarm!!
-'ignon'    - ignition on trigged alarm
+'ignon'    - ignition turn trigged alarm
 'dooropen'
 'hoodopen'
-'shock'    - bang alarm 2st
-'mute'     - shutup siren
-'armed'
-'disarmed'
+'shock'    - bang alarm 2nd level
+*'mute'     - shutup siren
+*'armed'
+*'disarmed'
+      
+_______________________________________________________________
+* not implemented in v1.2
