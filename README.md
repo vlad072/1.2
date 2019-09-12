@@ -6,7 +6,7 @@
 *         mail to: pervuninsky.vlad@gmail.com            *
 **********************************************************
 
-============== usage info ===============
+================ usage =================
       ---------- dtmf key ----------
 '2' - keep connection enable/disable. reconnect in case of connection loss
 '3' - shock sensor enable/disable
