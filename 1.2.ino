@@ -56,11 +56,7 @@ void modemreconf() {
   dbg("modem reconf...");
   modem.print  (F("AT&F+IPR="));  modem.println(UART_BPS, DEC); modem.find("OK\r\n"); // usart speed
   modem.print  (F("AT+BTHOST=")); modem.println(cid);           modem.find("OK\r\n"); // blue host name
-  modem.println(F("AT+CMIC=0,15;+BTPAIRCFG=1;E0&W"));           modem.find("OK\r\n");/* modem.find("OK\r\n"); //AT+CMICBIAS turn mic power; AT+CMIC=2,15(  =15) BT mic gain; AT+BTVGS=15 BT aux gain; AT+BTVGM=? MIC gain level //+COLP=1; +CLIP=1 
-  modem.println(F("AT+CSTT=internet.tele2.ru")), modem.find("OK\r\n");                           //AT+BTGETPROF=1 req BT profile; AT+BTCONNECT=1,2(6) trying BT conn
-  modem.println(F("AT+CIICR"));                  modem.find("OK\r\n");
-  modem.println(F("AT+CIFSR"));                  modem.find("10.");
-  modem.println(F("AT+CDNSCFG=8.8.8.8"));        modem.find("OK\r\n");*/  
+  modem.println(F("AT+CMIC=0,15;+BTPAIRCFG=1;E0&W"));           modem.find("OK\r\n"); // modem.find("OK\r\n");
 }
 void play(const char* track) {
   if (celstate != 0x06) return;
@@ -304,17 +300,6 @@ void btspp( const char* msg, byte len ) { //+++++++++++++++++++ BLUETOOTH SETUP 
     }
     if (_found) EEPROM.put(atoi(_paramptr) * 8 + 0x40, _sid);
     modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(_found ? F(" ok\r\n") : F(" error!\r\n")), modem.write(0x1A);
-  /*} else if (!strncmp(msg, "key", 3)) {
-    byte _byte = 0; bool _res = true;
-    for (byte _i = 0; _i < 16; _i++) {
-      if ( !isxdigit(_paramptr[_i]) || (_i >= _paramlen) ) { _res = false; break; }
-      if      (_paramptr[_i] <= '9') _byte |= _paramptr[_i] - 0x30;
-      else if (_paramptr[_i] <= 'F') _byte |= _paramptr[_i] - 0x37;
-      else                           _byte |= _paramptr[_i] - 0x57;
-      if (_i & 1) EEPROM.update(0x40+(_i/2), _byte), _byte = 0;
-      else        _byte <<= 4; // even
-    }
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(_res ? F(" ok\r\n") : F(" error!\r\n")), modem.write(0x1A); */
   } else if (!strncmp(msg, "end", 3)) {
     modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(F(" reset...")), modem.write(0x1A), modem.find("SEND OK\r\n");
 //    modem.println(F("AT+BTUNPAIR=0")); modem.find("SEND OK\r\n");
