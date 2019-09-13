@@ -336,11 +336,7 @@ void dtmf(const char cmd) { //+++++++++++++++++++ ONCALL KEYPRESS HANDLING  ++++
   } else if (cmd == '3') {                                                      // shock sensor enble
     locked ^= 1; play(locked & 1 ? "shken" : "shkdis");
   } else if (cmd == '6') {                                                      // mute siren
-    siren.set(false); flash.set(false); play("mute");
-  } else if (cmd == '9') {                                                      // arm/disarm
-    locked ^= 0x80;
-    siren.set(false); flash.set(false); EIFR = EIFR;
-    play(locked & 0x80 ? "armed" : "disarmed");
+    siren.set(false); flash.set(false); //play("mute");
   } else if (cmd == '0') { dbg("setup");                                        // setup mode
     modem.setTimeout(6000);
     modem.println(F("AT+BTPOWER=1")); modem.find("OK\r\n");
@@ -497,7 +493,7 @@ void loop() {
   if (warmup) {
     bool _refresh = false;
     if ((millis() - t1min) > 60000ul) t1min = millis(), warmtimer--, _refresh = true;
-    warmup = neutral() && (warmtemp > temps[CUR][ENG]) && (warmtimer > 0);   
+    warmup = fuelpump.active() && neutral() && (warmtemp > temps[CUR][ENG]) && (warmtimer > 0);   
     if (!warmup) ign.set(false);
     if (!warmup || _refresh)  // send metrics
       if (sendstart()) {
