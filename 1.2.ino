@@ -9,7 +9,7 @@ OneWire ds(ONEWIRE_PIN);
 Input  door(DOOR_PIN), hood(HOOD_PIN), fuelpump(FUELPUMP_PIN);
 Output ign(IGN_PIN), lock(LOCK_PIN), unlock(UNLOCK_PIN), siren(SIREN_PIN), flash(FLASH_PIN), dvr(DVR_PIN), led(LED_PIN);
 InOut  starter(STARTER_SUPPLY_PIN, STARTER_PIN);
-Adc    vbatt(BATT_PIN, /*1024/5.11*4.7/(4.7+15)*/47.83f), ntrl(NEUTRAL_PIN, 200.48);
+Adc    vbatt(BATT_PIN, /*1024/5.11*4.7/(4.7+15)*/47.83f), ntrl(NEUTRAL_PIN, 200.48f);
 
 void(*reboot)(void) = 0;
 
