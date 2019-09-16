@@ -303,10 +303,10 @@ void btspp( const char* msg, byte len ) { //+++++++++++++++++++ BLUETOOTH SETUP 
     modem.println(F("AT+BTSPPSEND"));
     if (modem.find("> ")) modem.println(_ok ? F(" ok") : F(" error!")), modem.write(0x1A), modem.find("SEND OK\r\n");
   } else if (!strncmp(msg, "end", 3)) {
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(F(" reset...")), modem.write(0x1A), modem.find("SEND OK\r\n");
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" reset...")), modem.write(0x1A), modem.find("SEND OK\r\n");
     reboot();
   } else {
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" error!")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" error!")), modem.write(0x1A), modem.find("SEND OK\r\n");
   }
 }
 void dtmf(const char cmd) { //+++++++++++++++++++ ONCALL KEYPRESS HANDLING  ++++++++++++++++++
