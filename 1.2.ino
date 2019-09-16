@@ -183,20 +183,12 @@ void cmd(const char* topic, const char* payl) { //++++++++++++++  USER COMMAND I
   } else if (!strcmp(topic, "recon")) {    //*************** set reconnect count *******
     reconn = atoi(payl);
     if (sendstart()) pubf("inf/recon", reconn, 0), sendfin();
-  } else if (!strcmp(topic, "btpow")) {    //**************** blue power on/off ********
+  } else if (!strcmp(topic, "btpwr")) {    //**************** blue power on/off ********
     modem.setTimeout(5000);
     modem.print(F("AT+BTPOWER=")); modem.println(payl[0] > '0' ? "1" : "0"); modem.find("OK\r\n");
     if (payl[0] > '0') modem.println(F("AT+BTVIS=0")), modem.find("OK\r\n");
     modem.println(F("AT+BTSTATUS?"));
     modem.setTimeout(DEF_TIMEOUT);
-  } else if (!strcmp(topic, "btatt")) {    //**************** blue attach/detach *******
-    modem.println( payl[0] > '0' ? F("AT+BTVIS=1") : F("AT+BTUNPAIR=0") );
-    if (payl[0] > '0') tbtvis = millis();
-    if (modem.find("OK\r\n")) modem.println(F("AT+BTSTATUS?"));
-  } else if (!strcmp(topic, "btpin")) {    //**************** set blue PIN *************
-    byte _i = 0;
-    if (strlen(payl) == 4) for (_i = 0; isdigit(payl[_i]); _i++);
-    if (_i == 4) modem.print(F("AT+BTPAIRCFG=1,")), modem.println(payl); //modem.find("OK\r\n");
   } else if (!strcmp(topic, "alarm")) {    //****************** alarms *****************
     switch (payl[0]) {
       case '1': alarm = 0; if (sendstart()) pub("inf/alarm", "0"), sendfin(); // clear
@@ -300,12 +292,21 @@ void btspp( const char* msg, byte len ) { //+++++++++++++++++++ BLUETOOTH SETUP 
     }
     if (_found) EEPROM.put(atoi(_paramptr) * 8 + 0x40, _sid);
     modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(_found ? F(" ok\r\n") : F(" error!\r\n")), modem.write(0x1A);
+  } else if (!strncmp(msg, "btpin", 5)) {
+    bool _ok = false;
+    if (_paramlen == 4) modem.print(F("AT+BTPAIRCFG=1,")), modem.println(_paramptr), _ok = modem.find("OK\r\n"));
+    modem.println(F("AT+BTSPPSEND"));
+    if (modem.find("> ")) modem.println(_ok ? F(" ok") : F(" error!")), modem.write(0x1A), modem.find("SEND OK\r\n");
+  } else if (!strncmp(msg, "btdet", 5)) {
+    modem.println(F("AT+BTUNPAIR=0"));
+    bool _ok = modem.find("OK\r\n");
+    modem.println(F("AT+BTSPPSEND"));
+    if (modem.find("> ")) modem.println(_ok ? F(" ok") : F(" error!")), modem.write(0x1A), modem.find("SEND OK\r\n");
   } else if (!strncmp(msg, "end", 3)) {
     modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(F(" reset...")), modem.write(0x1A), modem.find("SEND OK\r\n");
-//    modem.println(F("AT+BTUNPAIR=0")); modem.find("SEND OK\r\n");
     reboot();
   } else {
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(F(" error!\r\n")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" error!")), modem.write(0x1A);
   }
 }
 void dtmf(const char cmd) { //+++++++++++++++++++ ONCALL KEYPRESS HANDLING  ++++++++++++++++++
