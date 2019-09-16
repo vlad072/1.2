@@ -274,15 +274,15 @@ void btspp( const char* msg, byte len ) { //+++++++++++++++++++ BLUETOOTH SETUP 
   if        ( !strncmp(msg, "srv", 3) && (_paramlen < 0x20) ) {
     for (byte _i = 0; _i < _paramlen; _i++) EEPROM.update(_i, _paramptr[_i]);
     EEPROM.update(_paramlen, 0);
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A), modem.find("SEND OK\r\n");
   } else if ( !strncmp(msg, "usr", 3) && (_paramlen < 0x10) ) {
     for (byte _i = 0; _i < _paramlen; _i++) EEPROM.update(_i+0x20, _paramptr[_i]);
     EEPROM.update(_paramlen+0x20, 0);
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A), modem.find("SEND OK\r\n");
   } else if ( !strncmp(msg, "pwd", 3) && (_paramlen < 0x10) ) {
     for (byte _i = 0; _i < _paramlen; _i++) EEPROM.update(_i+0x30, _paramptr[_i]);
     EEPROM.update(_paramlen+0x30, 0);
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(F(" ok")), modem.write(0x1A), modem.find("SEND OK\r\n");
   } else if ( !strncmp(msg, "sens", 4) && (_paramptr[0] >= '0') && (_paramptr[0] <= '3') && (_paramlen < 2) )  {
     byte _sid[8]; bool _found = false;
     while (ds.search(_sid)) {
@@ -291,7 +291,7 @@ void btspp( const char* msg, byte len ) { //+++++++++++++++++++ BLUETOOTH SETUP 
       if (_found) break;
     }
     if (_found) EEPROM.put(atoi(_paramptr) * 8 + 0x40, _sid);
-    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(_found ? F(" ok") : F(" error!")), modem.write(0x1A);
+    modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(_found ? F(" ok") : F(" error!")), modem.find("SEND OK\r\n");
   } else if (!strncmp(msg, "btpin", 5)) {
     bool _ok = false;
     if (_paramlen == 4) modem.print(F("AT+BTPAIRCFG=1,")), modem.println(_paramptr), _ok = modem.find("OK\r\n");
@@ -377,7 +377,8 @@ void athandling() { //++++++++++++++++++ AT RESPONSES HANDLING +++++++++++++++++
   _ptr = strstr(at, "+BTCONNECT:"); if (_ptr)
     if  (setupmode && strstr(_ptr+12, "\"SPP\"")) { 
       modem.println(F("AT+BTSPPGET=0")); modem.find("OK\r\n");
-      modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.print(F("Welcome to the BlackBox setup!")), modem.write(0x1A);
+      modem.println(F("AT+BTSPPSEND"));
+      if (modem.find("> ")) modem.print(F("Welcome to the BlackBox setup!")), modem.write(0x1A), modem.find("SEND OK\r\n");
     }
     else if ( (locked & 0x80) && (_ptr[12] > '0') && (!engrun() || warmup) ) locking(false);
   if    (strstr(at, "+BTDISCONN:")) if (!(locked & 0x80) && !fuelpump.active()) locking(true);
@@ -456,8 +457,9 @@ void loop() {
   if (starter.active()) ign.set(false), warmup = false;
   if (setupmode) {
     if (EIFR) {
-      _delay_ms(10);
-      modem.println(F("AT+BTSPPSEND")); if (modem.find("> ")) modem.println(EIFR & 1 ? F(" ! (>_<) !") : F(" (-_-)")), modem.write(0x1A);
+      _delay_ms(20);
+      modem.println(F("AT+BTSPPSEND"));
+      if (modem.find("> ")) modem.println(EIFR & 1 ? F(" ! (>_<) !") : F(" (-_-)")), modem.write(0x1A), modem.find("SEND OK\r\n");
       EIFR = EIFR;
     }
     return;
