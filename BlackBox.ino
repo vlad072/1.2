@@ -515,7 +515,7 @@ void loop() {
     if (!flash.on()) flash.run(2000ul);
     alarm &= ~0x40;
   }
-  if ((alarm > 1) && (celstate == 6))           //  alarm bits:
+  if ((alarm > 0x41) && (celstate == 6))           //  alarm bits:
     for ( byte _i = 5; _i > 0; _i-- ) {         //  0( h01 ) = shock1 
       if ( !(alarm & bit(_i)) ) continue;       //  1( h02 ) = shock2 
       alarm &= ~bit(_i);                        //  2( h04 ) = hood open                                                 
