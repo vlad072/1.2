@@ -22,7 +22,7 @@
 'sens=1'           - ...engine
 'sens=2'           - ...outside air
 'sens=3'           - ...vehacle
-'btdet'            - detach all bt pair !!! introduced since v.1.3
+'btclr'            - detach all bt pair !!! introduced since v.1.3
 'btpin=xxxx'       - update pin         !!! introduced since v.1.3
 'end'              - finish the settings & reboot
 =============== tech info ==============
@@ -32,7 +32,7 @@
 'inf/#'    - feedback from car to user app (below 'i')
 'notify'   - push notification to app
   low-level topics:
-'btpwr'    - on/off bt power                        (c/i) !!! change instead 'btpow' in v.1.3
+'btpwr'    - on/off bt power                        (c/i)
 'btpair'   - munber paired devices                  (i)
 'btcon'    - number connected dev via bt hsp        (i)
 'sq'       - baseband signal level                  (i)
@@ -57,8 +57,6 @@
 'drop'     - door opened                            (i)
 'hdop'     - hood opened                            (i)
 'start'    - start/stop engine                      (c)
-'btatt'    - attach new bt dev                      (c)   !!! removed in v.1.3
-'btpin'    - change bt pin (4 digit)                (c)   !!! removed in v.1.3
 'upd'      - update app info (one tab)              (c)
 'online'   - linked to brocker flag                 (i)
 ------ voice *.amr files into modem ------
@@ -75,9 +73,4 @@
 'dooropen'
 'hoodopen'
 'shock'    - bang alarm 2nd level
-*'mute'     - shutup siren
-*'armed'
-*'disarmed'
       
-_______________________________________________________________
-* not implemented in v1.2
