@@ -1,5 +1,5 @@
 **********************************************************
-*               BlackBox Progect v.1.3                   *
+*               BlackBox Progect v.1.5                   *
 * This software is distributed under the GNU GPL license *
 *         https://www.gnu.org/licenses/gpl.txt           *
 *               ©2019 Pervuninsky Vlad,                  *
@@ -11,20 +11,20 @@
 '2' - keep connection enable/disable. reconnect in case of connection loss
 '3' - shock sensor enable/disable
 '6' - shut up the siren
-*'9' - arm/disarm
 '#' - restore modem defaults then reboot
-'0' - setup mode for settings
+'0' - setup mode
   --- initial settings through bt spp ---
-'srv=<url>,<port>' - mqtt broker addr
+'srv=<url>,<port>' - mqtt broker addr & port
 'usr=<username>'   - login for authorization
 'pwd=<password>'   - password
 'sens=0'           - teach the internal pcb temperature sensor
 'sens=1'           - ...engine
 'sens=2'           - ...outside air
-'sens=3'           - ...vehacle
-'btclr'            - detach all bt pair !!! introduced since v.1.3
-'btpin=xxxx'       - update pin         !!! introduced since v.1.3
-'end'              - finish the settings & reboot
+'sens=3'           - ...vehicle
+'btclr'            - detach all bt paired dev
+'btpin=<xxxx>'     - update bt pin
+'?'                - help
+'end'              - finish the settings then reboot
 =============== tech info ==============
   --- topics for information transfer ---
   root topics:
@@ -58,7 +58,7 @@
 'hdop'     - hood opened                            (i)
 'start'    - start/stop engine                      (c)
 'upd'      - update app info (one tab)              (c)
-'online'   - linked to brocker flag                 (i)
+'online'   - brocker connected                      (i)
 ------ voice *.amr files into modem ------
 'recov'    - modem recovery
 'keep'     - keep connect
@@ -66,11 +66,10 @@
 'shken'    - shock sensor enabled
 'shkdis'   - ...disabled
 'setup'    - initial setup mode
-'error'
-'hello'
-'fire'     - fire alarm!!
+'error'    - error
+'hello'    - salutation
+'fire'     - fire alarm
 'ignon'    - ignition turn trigged alarm
-'dooropen'
-'hoodopen'
+'dooropen' - door openend
+'hoodopen' - hood or trunk opened
 'shock'    - bang alarm 2nd level
-      
