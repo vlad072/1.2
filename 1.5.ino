@@ -131,7 +131,7 @@ void sendlocate(const char* msg) {
   if (sendstart()) pub("inf/place", _link), pub(willt, "1"), sendfin();
 }
 void pubalarm() {
-  char _sign[12] = "F I D H -";
+  char _sign[10] = "F I D H -";
   if (alarm & 0x03) _sign[8] = alarm & 2 ? '2' : '1';
   for (byte _i = 2; _i < 6; _i++) if (!bitRead(alarm, _i)) _sign[10-_i*2] = '-';
   pub("inf/alarm", _sign);
