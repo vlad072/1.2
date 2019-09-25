@@ -1,8 +1,9 @@
 **********************************************************
-*               BlackBox Progect v.1.5                   *
+*               BlackBox Project v.1.8                   *
 * This software is distributed under the GNU GPL license *
 *         https://www.gnu.org/licenses/gpl.txt           *
-*               ©2019 Pervuninsky Vlad,                  *
+*               ©2019 Pervuninsky Vlad                   *
+*           http://drive2.ru/users/vlad0722/             *
 *         mail to: pervuninsky.vlad@gmail.com            *
 **********************************************************
 
@@ -10,21 +11,19 @@
       ---------- dtmf key ----------
 '2' - keep connection enable/disable. reconnect in case of connection loss
 '3' - shock sensor enable/disable
-'6' - shut up the siren
+'6' - siren shut up
 '#' - restore modem defaults then reboot
 '0' - setup mode
   --- initial settings through bt spp ---
 'srv=<url>,<port>' - mqtt broker addr & port
-'usr=<username>'   - login for authorization
-'pwd=<password>'   - password
-'sens=0'           - teach the internal pcb temperature sensor
-'sens=1'           - ...engine
-'sens=2'           - ...outside air
-'sens=3'           - ...vehicle
-'btclr'            - detach all bt paired dev
-'btpin=<xxxx>'     - update bt pin
+'usr=<username>'   - broker login
+'pwd=<password>'   - broker password
+'sens=0'           - teach the internal pcb temperature sensor (must be teached first, all ext sensors disconnected!)
+'sens=1'           - -/- engine (his connected only!)
+'sens=2'           - -/- outside air (his connected only!)
+'sens=3'           - -/- vehicle (his connected only!)
+'btpin=<xxxx>'     - update bt pin & detach all paired devs
 '?'                - help
-'end'              - finish the settings then reboot
 =============== tech info ==============
   --- topics for information transfer ---
   root topics:
@@ -39,7 +38,7 @@
 'warmup'   - remote warmup engine                   (i)
 'wutm'     - warmup timer in min's                  (c/i)
 'wutp'     - warmup temperature limit               (c/i)
-'trem'     - calculated time to engine temperature  (i)
+'trem'     - time left to destination temper        (i)
 'engtp'    - current engine temper                  (i)
 'pcbtp'    - current pcb temper                     (i)
 'outtp'    - outside temper                         (i)
@@ -48,7 +47,7 @@
 'lock'     - lock/ulock doors                       (c/i)
 'siren'    - siren act/silent mode                  (c/i)
 'shock'    - chock sensor en/dis                    (c/i)
-'sms'      - push/sms notify                        (c/i)
+'sms'      - sms/push notify                        (c/i)
 'keepc'    - keep connect to broker                 (c/i)
 'recon'    - broker reconnect count (debug)         (c/i)
 'alarm'    - alarm triggering/reset                 (c/i)
