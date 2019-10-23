@@ -508,7 +508,7 @@ void loop() {
 //    if (sendstart()) pub("notify", "broker isn't responding!"), sendfin();
     modemshut();
   }
-  if ((millis() - tsend) > 27333ul) tsend = millis(), ping();
+  if ( ((millis() - tresp) > 47333ul) && ((millis() - tsend) > 3333ul) ) tsend = millis(), ping();
   if ((millis() - t20sec) > 20000ul) { t20sec = millis();
     dsupdate();
     if (celstate && !modem.available()) modem.println(F("AT+CPAS")); // query cellular status - freez calling state fix
