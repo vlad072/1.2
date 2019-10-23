@@ -268,7 +268,6 @@ void cmd(const char* topic, const char* payl) { //++++++++++++++  USER COMMAND I
   } else dbg("unkn cmd!"); // update dash  
 }
 void ipd( const byte* frame, byte len = 1 ) { //++++++++++++++  PROCESSING DATA FROM BROKER  ++++++++++++++++++
-  tresp = millis();
   for (byte _ofs = 0; _ofs < len;) {
     if ( (frame[_ofs] == 0xD0) && (frame[_ofs+1] == 0x00) ) {            // pingresp
       dbg("pingresp");
@@ -446,7 +445,7 @@ void athandling() { //++++++++++++++++++ AT RESPONSES HANDLING +++++++++++++++++
     if (sendstart()) pub("inf/sq", _sq), pub(willt, "1"), sendfin();
   }
   _ptr = strstr(at, "+CIPGSMLOC:"); if (_ptr) if (_ptr[12] == '0') if (sendstart()) publocate(_ptr+12), pub(willt, "1"), sendfin();
-  _ptr = strstr(at, "+IPD");        if (_ptr) ipd( strchr(_ptr+6, ':')+1, atoi(_ptr+5) );
+  _ptr = strstr(at, "+IPD");        if (_ptr) tresp = millis(), ipd(strchr(_ptr+6, ':')+1, atoi(_ptr+5));
   _ptr = strstr(at, "+BTSPPDATA:"); if (_ptr) btspp( strchr(strchr(_ptr+11, ',')+1, ',')  + 1, atoi(strchr(_ptr+11, ',') + 1) );
 }
 void dsinit() {
