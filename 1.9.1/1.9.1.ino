@@ -71,8 +71,8 @@ void modemshut() {
   tsend = millis(); tresp = millis();
 }
 void play(const char* track) {
-  if (celstate != CEL_INCALL | CEL_VOREADY) return; dbg("play", track);
-  celstate &= ~CEL_VOREADY;
+  if (celstate != ONCALL | PLAYRDY) return; dbg("play", track);
+  celstate &= ~PLAYRDY;
   modem.print(F("AT+CREC=4,C:\\User\\")); modem.print(track); modem.println(F(".amr,0,90")); modem.find("OK\r\n");
 }
 bool sendstart() {
@@ -221,7 +221,7 @@ void cmd(const char* topic, const char* payl) { //++++++++++++++  USER COMMAND I
     switch (payl[0]) {
       case '1': alarm = 0; if (sendstart()) pubalarm(), sendfin();    // clear
       case '2': siren.set(false); flash.set(false); break;            // mute
-      case '3': if (locked & SIREN_ON) siren.twitch(1000ul); flash.twitch(3000ul); // raise
+      case '3': if (locked & SIREN_ON) siren.twitch(500ul, 3); flash.twitch(3000ul); // raise
     }
   } else if (!strcmp(topic, "upd"))   {    //*************** send inform to dash *******
     switch (payl[0]) {
@@ -351,7 +351,7 @@ void dtmf(const char cmd) { //+++++++++++++++++++ ONCALL KEYPRESS HANDLING  ++++
   dbg("dtmf", cmd);
   if (cmd == '#') {                                                             // emergency recovery
     modem.setTimeout(3000);
-    if (celstate == (CEL_INCALL | CEL_VOREADY)) play("recov"), modem.find("+CREC: 0");
+    if (celstate == (ONCALL | PLAYRDY)) play("recov"), modem.find("+CREC: 0");
     modem.println(F("ATH")); modem.find("OK\r\n");
     if (sendstart()) pub(willt, "0", true), sendfin();
     modemreconf(); reboot();
@@ -396,15 +396,15 @@ void athandling() { //++++++++++++++++++ AT RESPONSES HANDLING +++++++++++++++++
   _ptr = strstr(at, "+SAPBR:"); if (_ptr) modem.println( _ptr[10] == '3' ? F("AT+SAPBR=1,1") : F("AT+CIPGSMLOC=1,1") );
   _ptr = strstr(at, "+CLCC: 1,"); if (_ptr) {
     switch (_ptr[11]) {
-      case '0': siren.set(false); flash.set(false); celstate = CEL_INCALL | CEL_VOREADY; play("hello"); break;
+      case '0': siren.set(false); flash.set(false); celstate = ONCALL + PLAYRDY; play("hello"); break;
       case '2':
-      case '3': celstate = CEL_ALERT; break;
+      case '3': celstate = ALERT; break;
       case '6':
       case '7': celstate = 0; break;
       case '4': modem.println(strstr(_ptr+17, "\"admin\"") ? F("AT+DDET=1,500,0;A") : F("AT+CHUP"));
     } tresp = millis(); t20sec = millis();
   }
-  if (strstr(at, "+CREC: 0")) celstate |= CEL_VOREADY;
+  if (strstr(at, "+CREC: 0")) celstate |= PLAYRDY;
   if (strstr(at, "+CPAS: 0")) celstate  = 0;// tresp = millis();
   _ptr = strstr(at, "+DTMF:"); if (_ptr) dtmf(_ptr[7]);
   _ptr = strstr(at, "+BTCONNECTING:"); if (_ptr) if (setupmode && strstr(_ptr+15, "\"SPP\"")) modem.println(F("AT+BTACPT=1"));
@@ -546,8 +546,8 @@ void loop() {
   }
   if (alarm & NEW_ALARM) {
     alarm &= ~NEW_ALARM; dvr.twitch(60000ul);
-    if (celstate == 0) modem.println(F("ATD>\"admin\";")), celstate = CEL_ALERT;
-    if (celstate <  CEL_INCALL) {
+    if (celstate == 0) modem.println(F("ATD>\"admin\";")), celstate = ALERT;
+    if (celstate <  ONCALL) {
       if (locked & SIREN_ON) siren.twitch(15000ul);
       flash.twitch(20000ul);
     }
@@ -560,7 +560,7 @@ void loop() {
     if (!siren.on() && (locked & SIREN_ON)) siren.twitch(200ul, 2);
     if (!flash.on()) flash.twitch(2000ul);
   }
-  if ( (alarm > SHOCK1) && (celstate == (CEL_INCALL | CEL_VOREADY)) )
+  if ( (alarm > SHOCK1) && (celstate == (ONCALL + PLAYRDY)) )
     for ( byte _i = 5; _i > 0; _i-- ) {         //  0( h01 ) = shock1 
       if (!bitRead(alarm, _i)) continue;        //  1( h02 ) = shock2                                                     
       if (_i == 5) { play("fire");     break; } //  2( h04 ) = hood open  
