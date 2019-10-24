@@ -33,9 +33,9 @@
 #define FIRE_DET    0x20
 #define NEW_WARN    0x40
 #define NEW_ALARM   0x80
-#define CEL_ALERT   0x01    // celstate
-#define CEL_INCALL  0x02
-#define CEL_VOREADY 0x04
+#define ALERT       0x01    // celstate
+#define ONCALL      0x02
+#define PLAYRDY     0x04
 #define PUSH        0x01    // message mode
 #define SMS         0x02
 //======================= uart ==========================
