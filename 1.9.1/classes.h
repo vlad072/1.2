@@ -72,13 +72,17 @@ class Output { //============== output ===============
     }
     void processing() {
       if (!_switches) return;
-      if ((millis() - _begin) > _timeout) digitalWrite(_pin, !digitalRead(_pin)), _begin = millis(), _switches--;        
+      if ((millis() - _begin) > _timeout) {
+        digitalWrite(_pin, !digitalRead(_pin));
+        _begin = millis();
+        if (_switches > 0) _switches--;
+      }
     }
   private:
     byte _pin;
     uint32_t _begin    = 0;
     uint32_t _timeout  = 0;
-    byte     _switches = 0;
+    byte     _switches = 1;
 };
 class InOut : public Input, Output { //====== in/out =======
   public:
