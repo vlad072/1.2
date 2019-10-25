@@ -1,5 +1,5 @@
 **********************************************************
-*               BlackBox Project v.1.8                   *
+*                 BlackBox Project                       *
 * This software is distributed under the GNU GPL license *
 *         https://www.gnu.org/licenses/gpl.txt           *
 *               ©2019 Pervuninsky Vlad                   *
@@ -50,7 +50,7 @@
 'sms'      - sms/push notify                        (c/i)
 'keepc'    - keep connect to broker                 (c/i)
 'recon'    - broker reconnect count (debug)         (c/i)
-'alarm'    - alarm triggering/reset                 (c/i)
+'alarm'    - alarms signature/reset                 (c/i)
 'vbatt'    - battery voltage                        (i)
 'engr'     - engine running                         (i)
 'drop'     - door opened                            (i)
@@ -66,9 +66,9 @@
 'shkdis'   - ...disabled
 'setup'    - initial setup mode
 'error'    - error
-'hello'    - salutation
-'fire'     - fire alarm
-'ignon'    - ignition turn trigged alarm
+'hello'    - hello!
+'fire'     - fire detected
+'ignon'    - ignition turn-on
 'dooropen' - door openend
 'hoodopen' - hood or trunk opened
 'shock'    - bang alarm 2nd level
