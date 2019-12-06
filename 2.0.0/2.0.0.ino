@@ -142,13 +142,13 @@ void pubbalance(const char* msg) {
 }
 void publocate(const char* msg) {
   if (!msg) return;
-  char* _eptr = strchr(msg, ',') + 1;
-  char* _nptr = strchr(_eptr, ',') + 1;
-  byte  _elen = _nptr - _eptr - 1;
+//  char* _eptr = msg;
+  char* _nptr = strchr(msg, ',') + 1;
+  byte  _elen = _nptr - msg - 1;
   byte  _nlen = strchr(_nptr, ',') - _nptr;
 //  char  _link[64] = "https://www.google.com/maps/place/";
   char _link[24] = "";
-  strncat(_link, _nptr, _nlen+1); strncat(_link, _eptr, _elen);
+  strncat(_link, _nptr, _nlen+1); strncat(_link, msg, _elen);
   pub("inf/place", _link);
 }
 void pubalarm() {
@@ -372,15 +372,15 @@ void athandling() { //++++++++++++++++++ AT RESPONSES HANDLING +++++++++++++++++
   for (byte _i = 0; _i < _atlen; _i++) debug.write(at[_i]);
   #endif
   if (strstr(at, "SHUT OK")) if (keepconn && !setupmode) modem.print(F("AT+CIPMUX=0;+CIPSTART=TCP,")), modem.println(broker());
-  //_ptr = strstr(at, "+CGATT:"); if (_ptr) 
-  //  if (_ptr[8] == '1') modem.print(F(" AT+CIPMUX=0;+CIPSTART=TCP,")), modem.println(broker());
-  //  else                modem.println(F("AT+CGATT?"));
   if (strstr(at, "CONNECT OK")) brokercon();
   if (strstr(at, "SMS Ready")
    || strstr(at, "DEACT")
    || strstr(at, "CLOSED")
    || strstr(at, "CONNECT FAIL")) dbg("reconn!"), modemshut();
-  _ptr = strstr(at, "+SAPBR:"); if (_ptr) modem.println( _ptr[10] == '3' ? F("AT+SAPBR=1,1") : F("AT+CIPGSMLOC=1,1") );
+  _ptr = strstr(at, "+SAPBR:"); if (_ptr) swith (_ptr[10]) {
+    case '1': modem.println(F("AT+CIPGSMLOC=1,1")); break;
+    case '4': modem.println(F("AT+SAPBR=1,1"));
+  }
   _ptr = strstr(at, "+CLCC: 1,"); if (_ptr) {
     switch (_ptr[11]) {
       case '0': siren.set(false); flash.set(false); celstate = INCALL + PLAYRDY; play("hello"); break;
@@ -452,7 +452,7 @@ void athandling() { //++++++++++++++++++ AT RESPONSES HANDLING +++++++++++++++++
       if (sendfin()) modem.println(F("AT+BTSTATUS?"));
     }
   }
-  _ptr = strstr(at, "+CIPGSMLOC:"); if (_ptr) if (_ptr[12] == '0') if (sendstart()) publocate(_ptr+12), sendfin();
+  _ptr = strstr(at, "+CIPGSMLOC:"); if (_ptr) if (_ptr[12] == '0') if (sendstart()) publocate(_ptr+14), sendfin();
   _ptr = strstr(at, "+IPD");        if (_ptr) tresp = millis(), ipd( strchr(_ptr+6, ':')+1, atoi(_ptr+5) );
   _ptr = strstr(at, "+BTSPPDATA:"); if (_ptr) btspp( strchr(strchr(_ptr+11, ',')+1, ',') + 1, atoi(strchr(_ptr+11, ',') + 1) );
 }
