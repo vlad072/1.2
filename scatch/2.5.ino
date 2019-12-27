@@ -561,7 +561,7 @@ void loop() {
     alarm &= ~NEW_WARN; dvr.twitch(30000ul);
     if ((millis() - tlastmsg) > smsalert ? 5000ul : 1000ul) notify("BANG! (>_<)", smsalert ? SMS : PUSH), tlastmsg = millis();
     if (smsalert) alarm &= ~SHOCK1;
-    if (!siren.on() && (secure & SIREN_ON)) siren.twitch(20ul, 15);
+    if (!siren.on() && (secure & SIREN_ON)) siren.twitch(50ul, 5);
     if (!flash.on()) flash.twitch(2000ul);
   }
   if ( (alarm & ALARMS) && (celstate == (INCALL | PLAYRDY)) )
