@@ -349,7 +349,7 @@ void dtmf(const char cmd) { //+++++++++++++++++++ ONCALL KEYPRESS HANDLING  ++++
   } else if (cmd == '3') {                                                      // shock sensor enble
     secure ^= SHOCK_ON; play(secure & SHOCK_ON ? "shken" : "shkdis");
   } else if (cmd == '5') {                                                      // dvr run to 1min
-    if (dvr.on()) dvr.set(false); else dvr.twitch(60000ul);
+    if (dvr.on()) dvr.set(false); else dvr.twitch(120000ul);
     play(dvr.on() ? "dvron" : "dvroff");
   } else if (cmd == '0') { dbg("setup");                                        // setup mode
     modem.setTimeout(3000);
@@ -549,7 +549,7 @@ void loop() {
             alarm |= FIRE_DET, ign.set(false);
   }
   if (  (alarm & ALARMS) && (celstate == 0) && ( ((millis() - tlastcall) > 120000ul) || (millis() < 120000ul) || (alarm & NEW_ALARM) )  )
-    modem.println(F("ATD>\"admin\";")), celstate = ALERT, tlastcall = millis();
+    modem.println(F("AT+DDET=1,500,0;D>\"admin\";")), celstate = ALERT, tlastcall = millis();
   if (alarm & NEW_ALARM) {
     alarm &= ~NEW_ALARM; dvr.twitch(60000ul);
     if (celstate <  INCALL) {
