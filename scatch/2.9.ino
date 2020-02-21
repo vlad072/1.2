@@ -160,7 +160,7 @@ void locking(bool lk) {
   if (lk) {                   // lock
     bool _opened = door.active() || hood.active();
     notify(_opened ? "VEHICLE ISN'T CLOSED!" : "ARMED", _opened ? PUSH+SMS : PUSH);
-    if (_opened) siren.twitch(100ul, 3); else if (secure & 0x02) siren.twitch(2ul);
+    if (_opened) siren.twitch(100ul, 3); else if (secure & 0x02) siren.twitch(1ul);
     lock.twitch(500ul, 2); flash.twitch(1200ul);
     secure |= 0x81;
     door.change(); hood.change(); EIFR = EIFR; alarm = 0;
@@ -169,7 +169,7 @@ void locking(bool lk) {
       if      (alarm & 0x3C)  siren.twitch(50ul, 3);
       else if (alarm & 0x02)  siren.twitch(50ul, 2);
       else if (alarm & 0x01)  siren.twitch(50ul, 1);
-      else                    siren.twitch(2ul);
+      else                    siren.twitch(1ul);
     notify("DISARMED");
     unlock.twitch(300ul); flash.twitch(350ul);
     secure &= ~0x80;
