@@ -26,7 +26,7 @@ Initial settings through BT SPP:
 | sens=2 |         teach outside air temperature sensor (his one connected only!) |
 | sens=3 |         teach vehicle temperature sensor (his one connected only!) |
 | sens=? |         read sensors info |
-| btpin=xxxx |     update bt pin & detach all paired devs |
+| btpin=xxxx |     change bt pin & detach all paired devs |
 | ? |              help |
 
 ### Tech info
