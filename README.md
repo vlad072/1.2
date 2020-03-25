@@ -15,13 +15,14 @@
 '#' - restore modem defaults then reboot
 '0' - setup mode
   --- initial settings through bt spp ---
-'srv=<url>,<port>' - mqtt broker addr & port
-'usr=<username>'   - broker login
-'pwd=<password>'   - broker password
+'srv=url,port'     - mqtt broker addr & port
+'usr=username'     - broker login
+'pwd=password'     - broker password
 'sens=0'           - teach the internal pcb temperature sensor (must be defined first, all ext sensors disconnected!)
 'sens=1'           - -/- engine (his one connected only!)
 'sens=2'           - -/- outside air (his one connected only!)
 'sens=3'           - -/- vehicle (his one connected only!)
+'sens=?'           - read sensors info
 'btpin=<xxxx>'     - update bt pin & detach all paired devs
 '?'                - help
 =============== tech info ==============
@@ -56,6 +57,8 @@
 'start'    - remote start/stop engine               (c)
 'upd'      - update info panel                      (c)
 'online'   - blackbox connected                     (i)
+'dvr'      - dvr on/off                             (c/i)
+'gear'     - gear state N/D                         (i)
 ------ voice *.amr files into modem ------
 'recov'    - modem recovery
 'keep'     - keep connect
@@ -72,3 +75,5 @@
 'dooropen' - door openend
 'hoodopen' - hood or trunk opened
 'shock'    - bang alarm hi-level
+'dvron'    - dvr on
+'dvroff'   - dvr off
