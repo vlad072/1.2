@@ -12,20 +12,22 @@ DTMF key:
  |2 | keep connection enable/disable. reconnect when connection loss
  |3 | shock sensor enable/disable
  |5 | dvr power turn on/off
- |$# | restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
- |$* | setup mode
+ |# | restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
+ |* | setup mode
 
 Initial settings through BT SPP:
-* 'srv=url,port'    - mqtt broker addr & port
-* 'usr=username'    - broker login
-* 'pwd=password'    - broker password
-* 'sens=0'          - teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!)
-* 'sens=1'          - -/- engine (his one connected only!)
-* 'sens=2'          - -/- outside air (his one connected only!)
-* 'sens=3'          - -/- vehicle (his one connected only!)
-* 'sens=?'          - read sensors info
-* 'btpin=xxxx'      - update bt pin & detach all paired devs
-* '?'                - help
+| Command | Descript |
+|------------ | -------------|
+| srv=url,port |   mqtt broker addr & port |
+| usr=username |   broker login |
+| pwd=password |   broker password |
+| sens=0 |         teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
+| sens=1 |         -/- engine (his one connected only!) |
+| sens=2 |         -/- outside air (his one connected only!) |
+| sens=3 |         -/- vehicle (his one connected only!) |
+| sens=? |         read sensors info |
+| btpin=xxxx |     update bt pin & detach all paired devs |
+| ? |              help |
 
 ### Tech info
 
