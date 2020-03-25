@@ -7,8 +7,10 @@ mail to: pervuninsky.vlad@gmail.com
 
 ### Usage 
 DTMF key:
-* '2' - keep connection enable/disable. reconnect when connection loss
-* '3' - shock sensor enable/disable
+|    Key     |          Descript                 |
+------------ | -------------
+ 2 | keep connection enable/disable. reconnect when connection loss
+ 3 | shock sensor enable/disable
 * '5' - dvr power turn on/off
 * '#' - restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
 * '*' - setup mode
