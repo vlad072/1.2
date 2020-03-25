@@ -13,17 +13,17 @@
 '3' - shock sensor enable/disable
 '5' - dvr power turn on/off
 '#' - restore modem defaults then reboot
-'0' - setup mode
+'*' - setup mode
   --- initial settings through bt spp ---
 'srv=url,port'     - mqtt broker addr & port
 'usr=username'     - broker login
 'pwd=password'     - broker password
-'sens=0'           - teach the internal pcb temperature sensor (must be defined first, all ext sensors disconnected!)
+'sens=0'           - teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!)
 'sens=1'           - -/- engine (his one connected only!)
 'sens=2'           - -/- outside air (his one connected only!)
 'sens=3'           - -/- vehicle (his one connected only!)
 'sens=?'           - read sensors info
-'btpin=<xxxx>'     - update bt pin & detach all paired devs
+'btpin=xxxx'       - update bt pin & detach all paired devs
 '?'                - help
 =============== tech info ==============
   --- topics for information transfer ---
@@ -74,6 +74,4 @@
 'ignon'    - ignition turn-on
 'dooropen' - door openend
 'hoodopen' - hood or trunk opened
-'shock'    - bang alarm hi-level
-'dvron'    - dvr on
-'dvroff'   - dvr off
+'shock'    - 2nd lvl bang alarm
