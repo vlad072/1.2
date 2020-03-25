@@ -35,8 +35,8 @@ Initial settings through BT SPP:
 
 |Root topics|Descript|
 |------------ | -------------|
-| cmd/#  |  commands from user to car (below remark 'c') |
-| inf/#  |  feedback from car to user app (below 'i') |
+| cmd/#  |  commands from user to car (below remark 'C') |
+| inf/#  |  feedback from car to user app (below 'I') |
 | notify |  push notification to user |
 | log    |  evnt log |
 
@@ -70,18 +70,20 @@ gear'    | gear state N/D                       |   | x |
 
 ##### Voice *.amr files into modem:
 
-* 'recov'    - modem recovery
-* 'keep'     - keep connect
-* 'nkeep'    - don't keep
-* 'shken'    - shock sensor enabled
-* 'shkdis'   - ...disabled
-* 'dvron'    - dvr power on
-* 'dvroff'   - ..off
-* 'setup'    - initial setup mode
-* 'error'    - error
-* 'hello'    - hello :)
-* 'fire'     - fire detected
-* 'ignon'    - ignition turn-on
-* 'dooropen' - door openend
-* 'hoodopen' - hood or trunk opened
-* 'shock'    - 2nd lvl bang alarm
+| File name | Descript |
+|---|---|
+recov    | modem recovery |
+keep     | keep connect |
+nkeep    | don't keep |
+shken    | shock sensor enabled |
+shkdis   | ...disabled |
+dvron    | dvr power on |
+dvroff   | ..off |
+setup    | initial setup mode |
+error    | error |
+hello    | hello :) |
+fire     | fire detected |
+ignon    | ignition turn-on |
+dooropen | door openend |
+hoodopen | hood or trunk opened |
+shock    | 2nd lvl bang alarm |
