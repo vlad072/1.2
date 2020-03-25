@@ -21,13 +21,13 @@ Initial settings through BT SPP:
 | srv=url,port |   mqtt broker addr & port |
 | usr=username |   broker login |
 | pwd=password |   broker password |
-| sens=0 |         teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
-| sens=1 |         teach engine temperature sensor (his one connected only!) |
-| sens=2 |         teach outside air temperature sensor (his one connected only!) |
-| sens=3 |         teach vehicle temperature sensor (his one connected only!) |
-| sens=? |         read sensors info |
-| btpin=xxxx |     change bt pin & detach all paired devs |
-| ? |              help |
+| sens=0       |   teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
+| sens=1       |   teach engine temperature sensor (his one connected only!) |
+| sens=2       |   teach outside air temperature sensor (his one connected only!) |
+| sens=3       |   teach vehicle temperature sensor (his one connected only!) |
+| sens=?       |   read sensors info |
+| btpin=xxxx   |   change bt pin & detach all paired devs |
+| ?            |   help |
 
 ### Tech info
 
@@ -63,27 +63,27 @@ Initial settings through BT SPP:
 |drop    | door opened                          |   | x |
 |hdop    | hood opened                          |   | x |
 |start   | remote start/stop engine             | x |   |
-upd'     | update info panel                    | x |   |
-online'  | blackbox connected                   |   | x |
-dvr'     | dvr on/off                           | x | x |
-gear'    | gear state N/D                       |   | x |
+|upd     | update info panel                    | x |   |
+|online  | blackbox connected                   |   | x |
+|dvr     | dvr on/off                           | x | x |
+|gear    | gear state N/D                       |   | x |
 
 ##### Voice *.amr files into modem:
 
 | File name | Descript |
 |---|---|
-recov    | modem recovery |
-keep     | keep connect |
-nkeep    | don't keep |
-shken    | shock sensor enabled |
-shkdis   | ...disabled |
-dvron    | dvr power on |
-dvroff   | ..off |
-setup    | initial setup mode |
-error    | error |
-hello    | hello :) |
-fire     | fire detected |
-ignon    | ignition turn-on |
-dooropen | door openend |
-hoodopen | hood or trunk opened |
-shock    | 2nd lvl bang alarm |
+|recov    | modem recovery |
+|keep     | keep connect |
+|nkeep    | don't keep |
+|shken    | shock sensor enabled |
+|shkdis   | ...disabled |
+|dvron    | dvr power on |
+|dvroff   | ..off |
+|setup    | initial setup mode |
+|error    | error |
+|hello    | hello :) |
+|fire     | fire detected |
+|ignon    | ignition turn-on |
+|dooropen | door openend |
+|hoodopen | hood or trunk opened |
+|shock    | 2nd lvl bang alarm |
