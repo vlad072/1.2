@@ -43,7 +43,7 @@ Initial settings through BT SPP:
 
 |Sub topics|Descript|C|I|
 |---|---|---|---|
-|btpwr   | on/off bt power                      | [x] | x |
+|btpwr   | on/off bt power                      | x | x |
 |btcon   | number conn/paired devs via bt hsp   |   | x |
 |sq      | baseband signal level                |   | x |
 |warmup  | remote warmup engine                 |   | x |
