@@ -28,6 +28,7 @@ Initial settings through BT SPP:
 | sens=?       |   read sensors info |
 | btpin=xxxx   |   change bt pin & detach all paired devs |
 | ?            |   help |
+| exit         |   exit setup mode |
 
 ### Tech info
 
