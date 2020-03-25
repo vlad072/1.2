@@ -28,6 +28,7 @@ Initial settings through BT SPP:
 ### Tech info
 
 ##### MQTT topics:
+
 Root topics:
 * 'cmd/#'    - commands from user to car (below remark 'c')
 * 'inf/#'    - feedback from car to user app (below 'i')
@@ -62,6 +63,7 @@ Sub topics:
 * 'gear'     - gear state N/D                         (i)
 
 ##### Voice *.amr files into modem:
+
 * 'recov'    - modem recovery
 * 'keep'     - keep connect
 * 'nkeep'    - don't keep
