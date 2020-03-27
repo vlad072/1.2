@@ -49,22 +49,23 @@ Initial settings through BT SPP:
 |warmup  | remote warmup engine                 |   | x |
 |wutm    | warmup timer in min's                | x | x |
 |wutp    | warmup temperature limit             | x | x |
-|engtp   | current engine temper                |   | x |
-|pcbtp   | current pcb temper                   |   | x |
-|outtp   | outside temper                       |   | x |
+|engtp   | engine temperature                   |   | x |
+|vehtp   | vehacle temperature                  |   | x |
+|pcbtp   | pcb (internal) temperature           |   | x |
+|outtp   | outside temperature                  |   | x |
 |balance | sim-card balance                     |   | x |
 |place   | lbs location <nn.nnnn,ee.eeee>       |   | x |
 |lock    | lock/ulock doors                     | x | x |
 |siren   | siren act/silent mode                | x | x |
 |shock   | chock sensor en/dis                  | x | x |
 |sms     | sms/push notify                      | x | x |
-|alarm   | alarms byte/reset                    | x | x |
-|vbatt   | battery voltage                      | x | x |
+|alarm   | alarms, reset                        | x | x |
+|vbatt   | battery voltage                      |   | x |
 |engr    | engine running                       |   | x |
 |drop    | door opened                          |   | x |
 |hdop    | hood opened                          |   | x |
 |start   | remote start/stop engine             | x |   |
-|upd     | update info panel                    | x |   |
+|upd     | update info                          | x |   |
 |online  | blackbox connected                   |   | x |
 |dvr     | dvr on/off                           | x | x |
 |gear    | gear state N/D                       |   | x |
