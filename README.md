@@ -18,6 +18,7 @@ DTMF key:
 Initial settings through BT SPP:
 | Command | Descript |
 |------------ | -------------|
+| moto=x       |   set engine working hours |
 | srv=url,port |   mqtt broker addr & port |
 | usr=username |   broker login |
 | pwd=password |   broker password |
@@ -69,6 +70,7 @@ Initial settings through BT SPP:
 |online  | blackbox connected                   |   | x |
 |dvr     | dvr on/off                           | x | x |
 |gear    | gear state N/D                       |   | x |
+|moto    | engine working hours counter         |   | x |
 
 ##### Voice *.amr files into modem:
 
