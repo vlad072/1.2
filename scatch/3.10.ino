@@ -47,7 +47,7 @@ bool engrun() {
   return pump.active() && (vbatt.value() > 13.4f);
 }
 void starting() {
-  if ( warmup || pump.active() || !neutral() || ((warmtemp - temps[CUR][ENG]) < 5) || (vbatt.value() < 10.5f) ) return;
+  if ( warmup || pump.active() || !neutral() || (vbatt.value() > 13.4f) || ((warmtemp - temps[CUR][ENG]) < 5) || (vbatt.value() < 10.5f) ) return;
   ign.set(1); _delay_ms(250);
   if (starter.active()) goto _fin;                         // mosfet breakdown
   _delay_ms(3000); wdt_reset();
