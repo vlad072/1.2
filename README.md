@@ -12,8 +12,9 @@ DTMF key:
  |2 | keep connection enable/disable. reconnect when connection loss
  |3 | shock sensor enable/disable
  |5 | dvr power turn on/off
- |# | restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
- |* | setup mode
+ |# | (long press) restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
+ |* | (long press) setup mode
+ |0 | (long press) reset
 
 Initial settings through BT SPP:
 | Command | Descript |
@@ -22,6 +23,7 @@ Initial settings through BT SPP:
 | srv=url,port |   mqtt broker addr & port |
 | usr=username |   broker login |
 | pwd=password |   broker password |
+| pref=prefix  |   prefix topics |
 | sens=0       |   teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
 | sens=1       |   teach engine temperature sensor (his one connected only!) |
 | sens=2       |   teach outside air temperature sensor (his one connected only!) |
@@ -91,3 +93,5 @@ Initial settings through BT SPP:
 |dooropen | door openend |
 |hoodopen | hood or trunk opened |
 |shock    | 2nd lvl bang alarm |
+|reboot   | reset |
+|normal   | return from setup mode |
