@@ -23,7 +23,7 @@ Initial settings through BT SPP:
 | srv=url,port |   mqtt broker addr & port |
 | usr=username |   broker login |
 | pwd=password |   broker password |
-| pref=prefix  |   prefix topics |
+| pref=prefix  |   prefix topics | V.4 ONLY!!!
 | sens=0       |   teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
 | sens=1       |   teach engine temperature sensor (his one connected only!) |
 | sens=2       |   teach outside air temperature sensor (his one connected only!) |
@@ -46,33 +46,30 @@ Initial settings through BT SPP:
 
 |Sub topics|Descript|C|I|
 |---|---|---|---|
-|btpwr   | on/off bt power                      | x | x |
-|btcon   | number conn/paired devs via bt hsp   |   | x |
-|sq      | baseband signal level                |   | x |
-|warmup  | remote warmup engine                 |   | x |
-|wutm    | warmup timer in min's                | x | x |
-|wutp    | warmup temperature limit             | x | x |
-|engtp   | engine temperature                   |   | x |
-|vehtp   | vehacle temperature                  |   | x |
-|pcbtp   | pcb (internal) temperature           |   | x |
-|outtp   | outside temperature                  |   | x |
-|balance | sim-card balance                     |   | x |
-|place   | lbs location <nn.nnnn,ee.eeee>       |   | x |
-|lock    | lock/ulock doors                     | x | x |
-|siren   | siren act/silent mode                | x | x |
-|shock   | chock sensor en/dis                  | x | x |
-|sms     | sms/push notify                      | x | x |
-|alarm   | alarms, reset                        | x | x |
-|vbatt   | battery voltage                      |   | x |
-|engr    | engine running                       |   | x |
-|drop    | door opened                          |   | x |
-|hdop    | hood opened                          |   | x |
-|start   | remote start/stop engine             | x |   |
-|upd     | update info                          | x |   |
-|online  | blackbox connected                   |   | x |
-|dvr     | dvr on/off                           | x | x |
-|gear    | gear state N/D                       |   | x |
-|moto    | engine working hours counter         |   | x |
+|btpwr   | on/off bt power                                            | x |   |
+|btst    | bt status bits: WCCCPPPP (W=power, C=connected, P=paired)  |   | x |
+|sq      | baseband signal level                                      |   | x |
+|wutm    | warmup timer in min's                                      | x | x |
+|wutp    | warmup temperature limit                                   | x | x |
+|engtp   | engine temperature                                         |   | x |
+|vehtp   | vehacle temperature                                        |   | x |
+|pcbtp   | pcb (internal) temperature                                 |   | x |
+|outtp   | outside temperature                                        |   | x |
+|balance | sim-card balance                                           |   | x |
+|place   | lbs location <nn.nnnn,ee.eeee>                             |   | x |
+|lock    | lock/ulock doors                                           | x | x |
+|siren   | siren act/silent mode                                      | x | x |
+|shock   | chock sensor en/dis                                        | x | x |
+|sms     | sms/push notify                                            | x | x |
+|alarm   | alarms, reset                                              | x | x |
+|vbatt   | battery voltage                                            |   | x |
+|engr    | engine running                                             | x | x |
+|doors   | door opened                                                |   | x |
+|start   | remote start/stop engine                                   | x |   |
+|upd     | update info                                                | x |   |
+|online  | blackbox connected                                         |   | x |
+|dvr     | dvr on/off                                                 | x | x |
+|moto    | engine working hours counter                               |   | x |
 
 ##### Voice *.amr files into modem:
 
