@@ -21,9 +21,10 @@ Initial settings through BT SPP:
 |------------ | -------------|
 | moto=x       |   set engine working hours |
 | srv=url,port |   mqtt broker addr & port |
+| srv=?        |   print connection settings |
 | usr=username |   broker login |
 | pwd=password |   broker password |
-| pref=prefix  |   prefix topics | V.4 ONLY!!!
+| pref=prefix  |   prefix topics |
 | sens=0       |   teach the internal pcb temperature sensor (must be defined first! all ext sensors disconnected!) |
 | sens=1       |   teach engine temperature sensor (his one connected only!) |
 | sens=2       |   teach outside air temperature sensor (his one connected only!) |
