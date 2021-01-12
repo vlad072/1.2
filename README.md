@@ -42,35 +42,36 @@ Initial settings through BT SPP:
 |------------ | -------------|
 | cmd/#  |  commands from user to car (below remark 'C') |
 | inf/#  |  feedback from car to user app (below 'I') |
-| notify |  push notification to user |
-| log    |  evnt log |
 
 |Sub topics|Descript|C|I|
 |---|---|---|---|
-|btpwr   | on/off bt power                                            | x |   |
-|btst    | bt status bits: WCCCPPPP (W=power, C=connected, P=paired)  |   | x |
-|sq      | baseband signal level                                      |   | x |
-|wutm    | warmup timer in min's                                      | x | x |
-|wutp    | warmup temperature limit                                   | x | x |
-|engtp   | engine temperature                                         |   | x |
-|vehtp   | vehacle temperature                                        |   | x |
-|pcbtp   | pcb (internal) temperature                                 |   | x |
-|outtp   | outside temperature                                        |   | x |
-|balance | sim-card balance                                           |   | x |
-|place   | lbs location <nn.nnnn,ee.eeee>                             |   | x |
-|lock    | lock/ulock doors                                           | x | x |
-|siren   | siren act/silent mode                                      | x | x |
-|shock   | chock sensor en/dis                                        | x | x |
-|sms     | sms/push notify                                            | x | x |
-|alarm   | alarms, reset                                              | x | x |
-|vbatt   | battery voltage                                            |   | x |
-|engr    | engine running                                             | x | x |
-|doors   | door opened                                                |   | x |
-|start   | remote start/stop engine                                   | x |   |
-|upd     | update info                                                | x |   |
-|online  | blackbox connected                                         |   | x |
-|dvr     | dvr on/off                                                 | x | x |
-|moto    | engine working hours counter                               |   | x |
+|btpwr   | on/off bt power                                                           | x |   |
+|btst    | bt status bits: WCCCPPPP (W=power, C=connected, P=paired)                 |   | x |
+|sq      | baseband signal level                                                     |   | x |
+|wutm    | warmup timer in min's                                                     | x | x |
+|wutp    | warmup temperature limit                                                  | x | x |
+|engtp   | engine temperature                                                        |   | x |
+|vehtp   | vehacle temperature                                                       |   | x |
+|pcbtp   | pcb (internal) temperature                                                |   | x |
+|outtp   | outside temperature                                                       |   | x |
+|balance | sim-card balance                                                          |   | x |
+|place   | lbs location <nn.nnnn,ee.eeee>                                            |   | x |
+|lock    | lock/ulock doors                                                          | x | x |
+|siren   | siren act/silent mode                                                     | x |   |
+|shock   | chock sensor en/dis                                                       | x |   |
+|secure  | secure bits: LxxxxSAW (L=locked, S=siren active, A=shock hi, W=shock low) | x |   |
+|sms     | sms/push notify                                                           | x | x |
+|alarm   | alarms, reset                                                             | x | x |
+|vbatt   | battery voltage                                                           |   | x |
+|engr    | engine running                                                            | x | x |
+|doors   | door opened bits: xxxxxxDH (D=doors, H=hood,trunk)                        |   | x |
+|start   | remote start/stop engine                                                  | x |   |
+|upd     | update info                                                               | x |   |
+|online  | blackbox connected                                                        |   | x |
+|dvr     | dvr on/off                                                                | x | x |
+|moto    | engine working hours counter                                              |   | x |
+|notify  | push notifications                                                        |   | x |
+|fwv     | firmware version                                                          |   | x |
 
 ##### Voice *.amr files into modem:
 
