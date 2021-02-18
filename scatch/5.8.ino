@@ -82,7 +82,7 @@ void modemshut() {
     modemreset();
 }
 void stoptrack() {                                 // stop curr track
-  if (callstate | 0x08) {
+  if (callstate & 0x08) {
     modem.println(F("AT+CREC=5"));
     if (waitresp("OK\r\n")) callstate &= ~0x08;
   }  
