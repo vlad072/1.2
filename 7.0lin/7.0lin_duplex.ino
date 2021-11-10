@@ -555,7 +555,7 @@ void dsupdate() {
 }
 void linhandling() {
   uint8_t _buf[5]; uint8_t _sz = 0; uint8_t _in = 0;
-  for ( uint32_t _t = millis(); !timeover(_t, 50); ) if (lin.available() > 0) {
+  for ( uint32_t _t = millis(); !timeover(_t, 50ul); ) if (lin.available() > 0) {
     _in = lin.read();
     if (_sz < 5) _buf[_sz] = _in;
     _sz++; _t = millis();
