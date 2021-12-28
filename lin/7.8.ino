@@ -172,14 +172,17 @@ void arming(bool arm) {
     secure |= 0x80;
     door.change(); hood.change(); EIFR = EIFR; alarm = alarmcash = 0;
   } else {                    // ================== unlock =====================
-    if (secure & 0x40)
-      if      (alarm & 0x3E)  siren.twitch(100ul, 3);
-      else if (alarm & 0x01)  siren.twitch(30ul,  2);
-      else                    siren.set(1), _delay_ms(10), siren.set(0);
+    if (secure & 0x40) {
+      if (alarmcash) {
+        for (uint8_t _i = 6; _i > 0; _i--) if (bitRead(alarmcash, _i-1)) { siren.twitch(30ul, _i); break; }
+      } else {
+        siren.set(1); _delay_ms(10); siren.set(0);
+      }
+    }
     secure &= ~0x80;
   }                           // ===============================================
   if (sendstart()) pubn("secure", secure), sendfin();
-  if ( _op && arm) {
+  if (_op && arm) {
     notify("VEH ISN'T CLOSED!", PUSH+SMS);
   } else {
     strcat(msg, arm ? " CLOSE":" OPEN");
