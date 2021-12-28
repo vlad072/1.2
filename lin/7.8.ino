@@ -656,7 +656,7 @@ void loop() {
     if (pump.change() == 1) alarm |= 0x90;
     if (batt < lowbatt) {
       strcpy(msg, "LOW BATT: "); dtostrf(batt, 5, 2, msg+10); notify();
-      lowbatt -= 0.25f;
+      lowbatt -= 0.1f;
     } else {
       if (batt > 12.1f) lowbatt = 12.0f;
     }
