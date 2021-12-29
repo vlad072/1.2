@@ -156,13 +156,13 @@ void notify(char* txt = NULL, uint8_t mode = PUSH) {
   if (mode & SMS) modem.println(F("AT+CPBF=\"admin\""));  
 }
 uint8_t hash(uint8_t arg, uint8_t sign) {
-  uint16_t _ret = (arg ^ sign) & 0x0F; // xor 1=close 2=open
+  uint16_t _raw = (arg ^ sign) & 0x0F; // xor 1=close 2=open
   for (uint8_t _i = (arg & 7) == 7 ? 5 : 4; _i < 8; _i++) {
-    bitSet(_ret, _i);
+    bitSet(_raw, _i);
     if ( !bitRead(arg, _i) ) break;
   }
-  _ret <<= (arg & 7);
-  return lowByte(_ret) | highByte(_ret);
+  _raw <<= (arg & 7);
+  return lowByte(_raw) | highByte(_raw);
 }
 void arming(bool arm) {
   if (setupmode) return;
