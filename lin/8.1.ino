@@ -32,11 +32,16 @@ bool waitresp(char* str = NULL, uint32_t timeout = DEF_TIMEOUT) {
   return _ret;
 }
 void starting() {
-  uint32_t _tstart = tstart();
-  if ( (temps[CUR][ENG] != -127) && (temps[CUR][ENG] < 0) ) _tstart += abs(temps[CUR][ENG]) * 15;
+  uint32_t _tstart = tstart(); int _batt = batt.value(); int _vmin = _batt;
+  if ( (temps[CUR][ENG] != -127) && (temps[CUR][ENG] < 0) ) _tstart += abs(temps[CUR][ENG]) * 25;
   if ( pump.active() || gear.value() || ((warmtemp - temps[CUR][ENG]) < 5) || (_tstart < 200ul) ) return;
   ign.set(1); delay(1000ul); wdt_reset();
-  starter.set(1); delay(_tstart); starter.set(0); wdt_reset();
+  starter.set(1); for (uint32_t _t = millis(); !timeover(_t, _tstart);) { // overspin protect
+    _batt = batt.value(); 
+    if  (_batt < _vmin) _vmin = _batt;
+    if ((_batt - _vmin) > 300) break;
+  } starter.set(0);
+  //delay(_tstart); starter.set(0); wdt_reset();
   delay(100ul); if (starter.active()) ign.set(0);
   delay(3000ul); wdt_reset();
   if (warmup = pump.active()) warmtimer = 20; else ign.set(0), delay(250ul);
