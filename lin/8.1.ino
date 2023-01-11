@@ -40,7 +40,7 @@ void starting() {
     _batt = batt.value();                                                 // overspin protect
     if  (_batt < _vmin) _vmin = _batt;
     if ((_batt - _vmin) > 1000) break;
-  } starter.set(0);
+  } starter.set(0); wdt_reset();
   //delay(_tstart); starter.set(0); wdt_reset();
   delay(100ul); if (starter.active()) ign.set(0);
   delay(3000ul); wdt_reset();
