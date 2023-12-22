@@ -1,4 +1,3 @@
-# BlackBox Project
 This software is distributed under the GNU GPL license https://www.gnu.org/licenses/gpl.txt
 
 ©2019 Pervuninsky Vlad http://drive2.ru/users/vlad0722/
@@ -99,3 +98,9 @@ Initial settings through BT SPP:
 |shock    | 2nd lvl bang alarm |
 |reboot   | reset |
 |normal   | return from setup mode |
+
+![brd4](https://github.com/vlad072/BlackBox/assets/45355941/612cb3f8-f07a-404a-9572-1d4f4a48ed12)
+![brd3](https://github.com/vlad072/BlackBox/assets/45355941/84f8f2ab-4b90-4abe-b807-d59b5d035b25)
+![brd2](https://github.com/vlad072/BlackBox/assets/45355941/cda67885-f366-410e-9b34-dd906aee809e)
+![brd1](https://github.com/vlad072/BlackBox/assets/45355941/d91d7154-0f5e-4888-8f24-bb6b7f482235)
+# BlackBox Project
