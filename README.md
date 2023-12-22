@@ -9,11 +9,16 @@ mail to: pervuninsky.vlad@gmail.com
 DTMF key:
 |    Key     |          Descript                 |
 |------------ | -------------|
+ |1 | help
  |2 | keep connection enable/disable. reconnect when connection loss
  |3 | shock sensor enable/disable
+ |4 | bluetooth en/dis
  |5 | dvr power turn on/off
+ |# | (short) clear alams cash
  |# | (long press) restore modem defaults then reboot (BLUETOOTH PIN WILL BE RESETING TO DEFAULT!!!)
+ |* | (short) remind alarms
  |* | (long press) setup mode
+ |9 | (long press) start/stop engine
  |0 | (long press) reset
 
 Initial settings through BT SPP:
